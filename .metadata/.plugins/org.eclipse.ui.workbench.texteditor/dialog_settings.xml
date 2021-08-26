@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="RiverClient"/>
+		<item key="selection" value="logo"/>
 		<list key="findhistory">
+			<item value="logo"/>
 			<item value="RiverServer"/>
 		</list>
 		<list key="replacehistory">
