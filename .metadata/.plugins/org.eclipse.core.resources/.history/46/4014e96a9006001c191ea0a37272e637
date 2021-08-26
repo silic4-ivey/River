@@ -5,21 +5,14 @@
 
 .button{
 	-fx-background-color: black;
-	-fx-border-color: #39ff14;
-	-fx-text-fill: #39ff14;
+	
 }
 
 .label{
-	-fx-text-fill: #39ff14;
+	
 }
 
 .text{
-	-fx-text-inner-color: #39ff14;
-	-fx-control-inner-background: black;
-	-fx-border-color: #39ff14;
-}
-
-.text-field{
 	-fx-text-inner-color: #39ff14;
 	-fx-control-inner-background: black;
 	-fx-border-color: #39ff14;

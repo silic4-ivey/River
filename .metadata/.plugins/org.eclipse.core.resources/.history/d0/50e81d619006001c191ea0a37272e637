@@ -1,0 +1,18 @@
+.root{
+	-fx-background-color: black;
+	-fx-border-color: #39ff14;
+}
+
+.button{
+	
+}
+
+.label{
+	
+}
+
+.text{
+	-fx-text-inner-color: #39ff14;
+	-fx-control-inner-background: black;
+	-fx-border-color: #39ff14;
+}

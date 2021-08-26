@@ -113,10 +113,10 @@ public class MainUI {
 		TextField text = new TextField("Type Here");
 				
 		Button sendButton = new Button("Send");
-		sendButton.setOnAction(e -> rc.writeTo(text.getText(), userName));
+		sendButton.setOnAction(e -> rc.writeTo(text.getText(), userName));   /////////////////////////////// create a logoff button
 		
 		Button logoffButton = new Button("Logoff");
-		logoffButton.setOnAction(e -> rc.closeAccess());  	
+		logoffButton.setOnAction(e -> rc.closeAccess());   /////////////////////////////// create a logoff button		
 
 		GridPane layout1 = new GridPane();
 		
@@ -144,7 +144,7 @@ public class MainUI {
 
 		scene2.getStylesheets().add("application.css");
 		
-		sr.start();
+		sr.start();  /////////////////////////////////
 		
 		window.setScene(scene2);
 		window.setTitle("The River");

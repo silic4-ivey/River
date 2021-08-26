@@ -39,7 +39,10 @@ public class MainUI {
 		
 				
 		Button connectButton = new Button("Connect");
-		connectButton.setOnAction(e ->startConnection(text.getText()));
+		connectButton.setOnAction(e ->startConnection(text.getText()));   ///////////////////////////////
+
+		//VBox layout1 = new VBox();
+		//layout1.getChildren().addAll(userLbl,text,connectButton);
 		
 		/*try {
 			Font terminalFont = Font.loadFont(new FileInputStream(new File(fontPath + modeSeven)),12);
@@ -52,6 +55,18 @@ public class MainUI {
 		}catch(FileNotFoundException e) {
 			e.printStackTrace();
 		}*/
+		
+		/*text.setStyle("-fx-text-inner-color: #39ff14");
+		text.setStyle("-fx-control-inner-background: black");
+		text.setStyle("-fx-border-color: #39ff14");
+		
+		userLbl.setTextFill(Color.web("#39ff14"));
+		
+		connectButton.setTextFill(Color.web("#39ff14"));
+		connectButton.setStyle("-fx-background-color: black");
+		connectButton.setStyle("-fx-border-color: #39ff14");*/
+		
+		//connectButton.setMaxSize(50, 20);
 
 		
 		GridPane layout1 = new GridPane();
@@ -59,6 +74,9 @@ public class MainUI {
 		layout1.setVgap(8);
 		layout1.setHgap(10);
 		
+		/*layout1.add(userLbl, size/2 -1, size/2);
+		layout1.add(text, size/2, size/2);
+		layout1.add(connectButton, size/2, size/2 -1);*/
 		
 		GridPane.setConstraints(userLbl, 19, 20);
 		GridPane.setConstraints(text, 20, 20);
@@ -66,15 +84,20 @@ public class MainUI {
 		
 		layout1.getChildren().addAll(userLbl,text,connectButton);
 
-		layout1.setGridLinesVisible(false);
+		layout1.setGridLinesVisible(true);
+		//layout1.setStyle("-fx-background-color: #000000");/////////////////////////////
 		
-		Scene scene1 = new Scene(layout1, size, size);
+		Scene scene1 = new Scene(layout1, size, size);//, Color.BLACK);///////////////////////////
+		//scene1.setFill(Color.BLACK);
 		scene1.getStylesheets().add("application.css");
 		
 		window.setScene(scene1);
 		window.setTitle("The River");
 		window.show();
 		
+		/*RiverClient cs = RiverClient.getInstance();
+		cs.writeTo();
+		cs.closeAccess();*/
 	}
 	
 	/**
@@ -82,7 +105,7 @@ public class MainUI {
 	 * @param userName the user's username
 	 */
 	public void startConnection(String userName) {
-		initializeClient();
+		initializeClient();  ///////////////////////////////////////////////////
 		setUser(userName);
 		switchStage();
 	}
@@ -113,10 +136,13 @@ public class MainUI {
 		TextField text = new TextField("Type Here");
 				
 		Button sendButton = new Button("Send");
-		sendButton.setOnAction(e -> rc.writeTo(text.getText(), userName));
+		sendButton.setOnAction(e -> rc.writeTo(text.getText(), userName));   /////////////////////////////// create a logoff button
 		
 		Button logoffButton = new Button("Logoff");
-		logoffButton.setOnAction(e -> rc.closeAccess());  	
+		logoffButton.setOnAction(e -> rc.closeAccess());   /////////////////////////////// create a logoff button
+		
+		//Text textBox = new Text();
+		
 
 		GridPane layout1 = new GridPane();
 		
@@ -138,13 +164,13 @@ public class MainUI {
 		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 		scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 
-		layout1.setGridLinesVisible(false);
+		layout1.setGridLinesVisible(false); ////////// delete after
 		Scene scene2 = new Scene(layout1, size, size);
 		scene2.setFill(Color.BLACK);
 
 		scene2.getStylesheets().add("application.css");
 		
-		sr.start();
+		sr.start();  /////////////////////////////////
 		
 		window.setScene(scene2);
 		window.setTitle("The River");
@@ -162,5 +188,7 @@ public class MainUI {
 
 		
 	}
+
+	
 
 }

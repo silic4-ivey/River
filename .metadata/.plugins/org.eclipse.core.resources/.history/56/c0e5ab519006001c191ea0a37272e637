@@ -1,0 +1,16 @@
+.root{
+	-fx-background-color: black;
+	-fx-border-color: #39ff14;
+}
+
+.button{
+	
+}
+
+.label{
+	
+}
+
+.text{
+	
+}
