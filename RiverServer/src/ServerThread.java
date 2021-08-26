@@ -1,6 +1,11 @@
 import java.net.*;
 import java.io.*;
 
+/**
+ * Thread for each client
+ * @author Stefan Ilic
+ *
+ */
 public class ServerThread extends Thread{
     protected Socket socket;
     private DataInputStream inp = null;
@@ -20,7 +25,10 @@ public class ServerThread extends Thread{
             return;
         }
     }
-
+    
+    /**
+     * Continuously looks for new input from the client, if found sends to all clients using the River server class.
+     */
     public void run() {
 
         String line;
@@ -32,10 +40,7 @@ public class ServerThread extends Thread{
                 if (line.equalsIgnoreCase("QUIT")) {
                     socket.close();
                     return;
-                } //else {
-                    //out.writeUTF(line /*+ "\n\r"*/);
-                    //out.flush();
-                //}
+                }
             } catch (IOException e) {
                 e.printStackTrace();
                 return;
@@ -43,6 +48,10 @@ public class ServerThread extends Thread{
         }
     }
     
+    /**
+     * Writes message to clients
+     * @param line
+     */
     public void write(String line) {
         try {
 

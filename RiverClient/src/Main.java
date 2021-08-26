@@ -5,10 +5,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
+/**
+ * Run to start the client
+ * @author Stefan Ilic
+ *
+ */
 public class Main extends Application{
 	
 	private MainUI mainUI;
 	
+	/**
+	 * Main method
+	 * @param args
+	 */
 	public static void main(String args[]) {
 		launch (args);
 	}

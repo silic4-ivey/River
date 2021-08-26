@@ -1,6 +1,11 @@
 import java.net.*;
 import java.io.*;
 
+/**
+ * Client backend that reads and writes messages from the Server.
+ * @author Stefan Ilic
+ *
+ */
 public class RiverClient {
 	private static RiverClient instance;
 	private final int PORT_NUM = 3333;
@@ -10,6 +15,9 @@ public class RiverClient {
 	private BufferedReader br;
 	private Boolean status;
 	
+	/**
+	 * Initializes input, output, and sockets
+	 */
 	private RiverClient() {
 		try {
 			s=new Socket("localhost",PORT_NUM); 
@@ -23,6 +31,10 @@ public class RiverClient {
 		}
 	}
 	
+	/**
+	 * Singleton design pattern to avoid multiple connections.
+	 * @return itself
+	 */
 	public static RiverClient getInstance() {
 		
 		if(instance==null) {
@@ -32,27 +44,27 @@ public class RiverClient {
 		
 	}
 	
+	/**
+	 * Writes to the ouput stream
+	 * @param s string to write
+	 * @param userName username to write
+	 */
 	public void writeTo(String s, String userName) {
 		try {
 
-			//String str="",str2="";  
-			//while(!str.equals("stop")){
-				//str=br.readLine();  
 			dout.writeUTF(userName + ": " + s);  
 			dout.flush();  
-				//str2=din.readUTF();  		/////////////////
-				//System.out.println(str2);  /////////////////
-			
-			//if(s.equals("stop")) {
-				//closeAccess();
-			//}
-			//} 
+
 		}catch(IOException io) {
 			System.out.println("Failed to write");
 			
 		}
 	}
 	
+	/**
+	 * Reads information from server.
+	 * @return
+	 */
 	public String readFrom() {
 		try {
 			return din.readUTF();
@@ -61,6 +73,9 @@ public class RiverClient {
 		}
 	}
 	
+	/**
+	 * Closes access to the server.
+	 */
 	public void closeAccess() {
 		try {
 			System.out.println("Client closed");
@@ -74,6 +89,10 @@ public class RiverClient {
 		}
 	}
 	
+	/**
+	 * Gets status of the client
+	 * @return
+	 */
 	public Boolean getStatus() {
 		return status;
 	}

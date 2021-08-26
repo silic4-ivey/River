@@ -2,21 +2,21 @@ import java.net.*;
 import java.util.ArrayList;
 import java.io.*;
 
+/**
+ * Server that handles requests from all clients
+ * @author Stefan Ilic
+ *
+ */
 public class RiverServer {
 	private static RiverServer instance;
 	private final int PORT_NUM = 3333;
 	private ServerSocket ss;  
-	private Socket s;  // will become local variable
-	ArrayList<ServerThread> allClients = new ArrayList<ServerThread>();
+	private Socket s;  
+	ArrayList<ServerThread> allClients = new ArrayList<ServerThread>();  // Reference to all clients
 
-	//private DataInputStream din;  // will
-	//private DataOutputStream dout;  // will
 	
 	private RiverServer () throws IOException{
 		ss=new ServerSocket(PORT_NUM);  
-		//s=ss.accept();  // will be moved down to the run server method ///////////////////
-		//din=new DataInputStream(s.getInputStream());  // move
-		//dout=new DataOutputStream(s.getOutputStream());  // move
 	}
 	
 	public static RiverServer getInstance() {
@@ -32,6 +32,10 @@ public class RiverServer {
 		
 	}
 	
+	/**
+	 * Continues to accept connections from new clients, initializes a new thread whenever a connection is accepted
+	 * @throws IOException
+	 */
 	public void runServer() throws IOException{
 		
 		//Socket s;
@@ -43,19 +47,17 @@ public class RiverServer {
 				ServerThread servT = new ServerThread(s, this);
 				servT.start();/////////////
 				allClients.add(servT);
-				
-				
-				
-				//System.out.println(str);
-				//str=din.readUTF();    
-				//dout.writeUTF(str);
-				//dout.flush();  
+				  
 			}
 		}catch(IOException io) {
 			System.out.println("Failed in run");
 		}
 	}
 	
+	/**
+	 * Sends message to all the clients
+	 * @param line
+	 */
 	public void sendMessage(String line) {
 		for(ServerThread st : allClients) {
 			if(st.isAlive()) {
@@ -67,12 +69,14 @@ public class RiverServer {
 		
 	}
 	
+	/**
+	 * Closes the server
+	 * @throws IOException
+	 */
 	public void closeServer() throws IOException{
 		try {
 			System.out.println("Server Closed");
-			//din.close(); 
-			//dout.close();////
-			//s.close();  
+
 			ss.close();
 		}catch(IOException io) {
 			System.out.println("Failed to close");

@@ -16,6 +16,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text; 
 import javafx.scene.control.ScrollPane;
 
+/**
+ * The main user interface of the client
+ * @author Stefan Ilic
+ *
+ */
 public class MainUI {
 	
 	private RiverClient rc;
@@ -94,20 +99,34 @@ public class MainUI {
 		cs.closeAccess();*/
 	}
 	
+	/**
+	 * Starts connection to the server with the provided userName
+	 * @param userName the user's username
+	 */
 	public void startConnection(String userName) {
 		initializeClient();  ///////////////////////////////////////////////////
 		setUser(userName);
 		switchStage();
 	}
 	
+	/**
+	 * Initializes the client backend
+	 */
 	public void initializeClient() {
 		rc = RiverClient.getInstance();
 	}
 	
+	/**
+	 * Sets user name
+	 * @param userName
+	 */
 	public void setUser(String userName) {
 		this.userName = userName;
 	}
 	
+	/**
+	 * Switches the screen to the second stage
+	 */
 	public void switchStage() { 
 		
 		ServerReader sr = new ServerReader(rc, this);
@@ -158,7 +177,10 @@ public class MainUI {
 		
 	}
 	
-	
+	/**
+	 * Updates the text on the screen
+	 * @param s the text to be shown on the screen
+	 */
 	public void updateText(String s) {
 		
 		textBox.setText(textBox.getText() + "\n" + s);
